@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -20,5 +21,15 @@ class FoodTruckControllerTest {
     void shouldReturnFoodTrucks() throws Exception {
         mvc.perform(get("/api/foodtrucks"))
                 .andExpect(status().isOk());
+    }
+
+    /**
+     * Test volontairement en échec pour voir comment la CI réagit.
+     */
+    @Test
+    void failingTestForCiDemo() {
+        // On s'attend "exprès" à un résultat faux :
+        // 1 == 2 -> ça va échouer
+        assertEquals(1, 2, "Ce test est volontairement en échec pour la démo CI");
     }
 }
